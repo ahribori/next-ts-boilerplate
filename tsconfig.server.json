@@ -1,8 +1,17 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "target": "es5",
     "module": "commonjs",
-    "outDir": ".next/server/"
+    "outDir": "dist",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "strict": true
   },
-  "include": ["server/**/*.ts"]
+  "include": [
+    "src/server/**/*"
+  ]
 }
