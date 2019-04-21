@@ -4,8 +4,9 @@ import * as compression from 'compression';
 import * as express from 'express';
 import { ServerOptions } from 'next-server';
 import router from '../routes';
+import config from './config';
 
-const port: number = 3000;
+const port: number = config.port;
 const dev: boolean = process.env.NODE_ENV !== 'production';
 const app = next({ dev, xPoweredBy: false, dir: path.resolve('src') } as ServerOptions);
 const handle = router.getRequestHandler(app);
