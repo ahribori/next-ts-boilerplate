@@ -12,9 +12,10 @@ const dev: boolean = process.env.NODE_ENV !== 'production';
 const app = next({ dev, xPoweredBy: false, dir: path.resolve('src') } as ServerOptions);
 const handle = router.getRequestHandler(app);
 const server = express();
+
 const cache = new Cache({
-  max: 100,
-  maxAge: 1000 * 60,
+  max: config.ssrCache.pool,
+  maxAge: 1000 * config.ssrCache.age,
 });
 
 const InitializeNextApp = async () => {
@@ -29,7 +30,9 @@ const runExpress = () => {
   /**
    * Cache Example
    */
-  server.get('/event/:eventId', renderAndCache);
+  config.ssrCache.paths.forEach((path: string) => {
+    server.get(path, renderAndCache);
+  });
 
   /**
    * Normal case

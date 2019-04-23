@@ -4,6 +4,11 @@ import * as yaml from 'js-yaml';
 
 export interface Configuration {
   port: number;
+  ssrCache: {
+    pool: number;
+    age: number;
+    paths: string[];
+  }
 }
 
 export enum RuntimeProfile {
