@@ -1,8 +1,7 @@
 // next.config.js
 const withSass = require('@zeit/next-sass');
-const withTypescript = require('@zeit/next-typescript');
 
-module.exports = withTypescript(withSass({
+module.exports = withSass({
     /**
      * 빌드파일 경로 설정.
      * Next 프로젝트 루트가 src로 설정되어있어서 (server.js에서 확인)
@@ -13,7 +12,7 @@ module.exports = withTypescript(withSass({
     /**
      * 파일시스템 기반의 routing 설정 (pages 폴더)
      */
-    useFileSystemPublicRoutes: false,
+    useFileSystemPublicRoutes: true,
 
     cssModules: true,
     cssLoaderOptions: {
@@ -38,4 +37,4 @@ module.exports = withTypescript(withSass({
         return cfg;
     }
 
-}));
+});
